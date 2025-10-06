@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const { logger } = require('../../logger');
 
 const routes = Router();
 

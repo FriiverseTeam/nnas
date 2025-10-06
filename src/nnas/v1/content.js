@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const xmlbuilder2 = require('xmlbuilder2');
-const timezones = require('../../timezones.json');
+const timezones = require('../timezones.json');
 
 const routes = Router();
 
@@ -36,7 +36,11 @@ routes.get('/agreements/:type/:region/:version', (req, res) => {
     }
   }));
 
-  const xml = xmlbuilder2.create({ agreements: { agreement: agreements } }).end({ prettyPrint: true });
+  const xml = xmlbuilder2.create({ 
+    agreements: { 
+      agreement: agreements 
+    } 
+  }).end({ prettyPrint: true });
 
   res.send(xml);
 });
