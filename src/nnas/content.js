@@ -21,12 +21,12 @@ routes.get('/agreements/:type/:region/:version', (req, res) => {
     texts: {
       '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
       '@xsi:type': 'chunkedStoredAgreementText',
-      main_title: { '#': 'Link3DS Services Agreement' },
+      main_title: { '#': 'Friiverse Services Agreement' },
       agree_text: { '#': 'Accept' },
       non_agree_text: { '#': 'Decline' },
       main_text: {
         '@index': '1',
-        '#': "Welcome to Link3DS Services Beta! Enjoy!"
+        '#': "Welcome to Friiverse Services Beta! Enjoy!"
       },
       sub_title: { '#': 'Privacy Policy' },
       sub_text: {

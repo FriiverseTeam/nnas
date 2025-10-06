@@ -1,5 +1,4 @@
 const { Router } = require('express');
-const xmlbuilder2 = require('xmlbuilder2');
 
 const routes = Router();
 
