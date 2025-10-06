@@ -1,2 +1,2 @@
 # nnas
-NNAS Replacement for Wii U/3DS.
+- NNAS Replacement for Wii U/3DS.
