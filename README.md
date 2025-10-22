@@ -1,7 +1,7 @@
 # nnas
-- NNAS Replacement for Wii U/3DS.
+- NNAS Replacement for Nintendo Wii U/3DS.
 
 ## Progress
-- [ ] NNAS
+- [x] NNAS
 - [x] CONNTEST
 - [ ] NASC

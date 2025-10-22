@@ -1,18 +1,19 @@
 const { Router } = require('express');
 const subdomain = require('express-subdomain');
-const path = require('path');
-const { logger } = require('../logger');
+const { logger } = require('../../logger');
 
 const conntest = Router();
 
 conntest.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', '..', 'public', 'index.html'));
+  res.set('Content-Type', 'text/html');
+  res.set('X-Organization', 'Nintendo');
+  res.send('OK.');
 });
 
 const router = Router();
 
-logger.info(`CONNTEST routes loaded!`);
-
 router.use(subdomain('conntest', conntest));
+
+logger.info('Conntest routes initialized!');
 
 module.exports = router;

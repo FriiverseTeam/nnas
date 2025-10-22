@@ -1,26 +1,29 @@
 const express = require('express');
+const dotenv = require('dotenv');
 const { logger } = require('./logger');
-require('dotenv').config();
+const { initializeDatabase } = require('./database');
 
-const conntest = require('./conntest');
-const nnas = require('./nnas');
+const conntest = require('./serv/conntest');
+const nnas = require('./serv/nnas');
 
-const app = express();
+dotenv.config();
 
-app.use(express.json());
+const serve = express();
 
-app.use(conntest);
-app.use(nnas);
+serve.use(express.json());
 
-app.use((req, res, next) => {
-  res.set('X-Organization', 'Nintendo');
-  next();
+serve.use(conntest);
+serve.use(nnas);
+
+serve.use((req, res) => {
+    res.status(404);
+    res.json({ 
+        error: 'Not Found',
+        code: 404
+    });
 });
 
-app.use((req, res) => {
-  res.status(404).json({ error: 'NO LMAO' });
-});
-
-app.listen(process.env.HTTP_PORT, () => {
-  logger.success(`NNAS Server is running on port: ${process.env.HTTP_PORT}`);
+serve.listen(process.env.HTTP_PORT, async () => {
+    await initializeDatabase();
+    logger.success(`NNAS Server is running on port ${process.env.HTTP_PORT}.`);
 });
